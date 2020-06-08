@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', "HomeController@root");
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('projects/store', 'ProjectsController@store')->name('projects.store');
-Route::PATCH('projects/{project}', 'ProjectsController@update')->name('projects.update');
-Route::delete('projects/{project}', 'ProjectsController@destroy')->name('projects.destroy');
+Route::get('/', 'ProjectsController@index');
+
+Route::resource('projects','ProjectsController');
+Route::resource('tasks','TasksController');
+Route::post('tasks/{id}/check','TasksController@check')->name('tasks.check');

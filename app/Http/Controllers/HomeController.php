@@ -7,16 +7,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -26,10 +16,5 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function root()
-    {
-        $projects = request()->user()->projects()->get();
-        // return collect() ? 'true':'false';
-        return view('welcome',compact('projects'));
-    }
+
 }

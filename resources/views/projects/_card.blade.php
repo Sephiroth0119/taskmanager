@@ -17,11 +17,11 @@
             </li>
         </ul>
 
-        <a href="projects/{{ $project->id }}">
+    <a href="{{ route('projects.show',$project->id) }}">
             <img src="{{ asset('storage/thumbs/original/'.$project->thumbnail) }}" class="card-img-top" alt="...">
         </a>
         <div class="card-body py-3">
-            <a href="projects/{{ $project->id }}">
+            <a href="{{ route('projects.show',$project->id) }}">
                 <h6 class="card-title text-center"> {{ $project->name }}</h6>
             </a>
         </div>

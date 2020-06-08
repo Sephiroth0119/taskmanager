@@ -15,14 +15,16 @@
                 <div class="form-group">
                     {!! Form::label('name', '项目名称：') !!}
                     {!! Form::text('name', null, ['class'=>'form-control']) !!}
+                    {!! $errors->getBag('update-'.$project->id)->first('name','<div class="alert alert-danger">:message</div>') !!}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('thumbnail', '项目缩略图：') !!}
                     {!! Form::file('thumbnail', ['class'=>'form-control-file']) !!}
+                    {!! $errors->getBag('update-'.$project->id)->first('thumbnail','<div class="alert alert-danger">:message</div>') !!}
                 </div>
 
-                @include('errors._errors')
+                {{-- @include('errors._errors') --}}
 
 
             </div>
