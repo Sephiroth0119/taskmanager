@@ -20,7 +20,8 @@
     <a href="{{ route('projects.show',$project->id) }}">
             <img src="{{ asset('storage/thumbs/original/'.$project->thumbnail) }}" class="card-img-top" alt="...">
         </a>
-        <div class="card-body py-3">
+        <div class="card-body 
+        -3">
             <a href="{{ route('projects.show',$project->id) }}">
                 <h6 class="card-title text-center"> {{ $project->name }}</h6>
             </a>

@@ -77,7 +77,16 @@
             @yield('content')
         </main>
     </div>
-    <!-- Scripts -->
+@auth
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+  <div> 当前共有{{ $total }}个任务，已完成{{ $doneCount }}个，未完成{{ $todoCount }}个 </div>
+  </div>
+</footer>
+
+@endauth
+<!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
     @yield('customJS')
 </body>

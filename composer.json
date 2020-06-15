@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
+        "nesbot/carbon": "^2.35",
         "overtrue/laravel-lang": "^3.0",
         "overtrue/pinyin": "^4.0"
     },

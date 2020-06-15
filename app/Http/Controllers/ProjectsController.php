@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Project;
 use Illuminate\Http\Request;
 use App\Repositories\ProjectsRepository;
+use Carbon\Carbon;
 
 class ProjectsController extends Controller
 {
@@ -41,10 +42,13 @@ class ProjectsController extends Controller
     //查
     public function show(Project $project)
     {
+        // return Carbon::createFromDate(1995,9,1)->addYears(1);
         // $project = $this->repo->find($id);
         $todos = $this->repo->todos($project);
         $dones = $this->repo->dones($project);
         $projects = request()->user()->projects()->pluck('name','id');
+        // $todoCount = $project->tasks()->where('completion',0)->count();
+        // // dd($todoCount);
         return view('projects._show',compact('project','todos','dones','projects'));
     }
 

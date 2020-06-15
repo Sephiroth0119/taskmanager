@@ -6,10 +6,14 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo" role="tab" aria-controls="todo"
                     aria-selected="true">待办事项</a>
+                     <span class="badge badge-pill badge-danger">{{ count($todos) }}</span>
+            </a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="done-tab" data-toggle="tab" href="#done" role="tab" aria-controls="done"
                     aria-selected="false">已完成</a>
+                     <span class="badge badge-pill badge-success">{{ count($dones) }}</span>
+            </a>
             </li>
 
         </ul>

@@ -12,7 +12,7 @@ class TasksRepository
          return Task::create([
             'name' => $request->name,
             'completion' => (int) false,
-            'project_id' => $request->project_id
+            'project_id' => $request->project
         ]);
     }
 
@@ -54,5 +54,20 @@ class TasksRepository
     {
         return auth()->user()->tasks()->where('completion',1)->paginate(5);
 
+    }
+
+    public function todoCount()
+    {
+        return auth()->user()->tasks()->where('completion',0)->count();
+    }
+
+    public function doneCount()
+    {
+        return auth()->user()->tasks()->where('completion',1)->count();
+    }
+
+    public function totalCount()
+    {
+        return auth()->user()->tasks()->count();
     }
 }
