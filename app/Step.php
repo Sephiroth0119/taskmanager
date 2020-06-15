@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Step extends Model
 {
     protected $fillable = [
-        'name','completion','task_id'
+        'name', 'completion', 'task_id'
     ];
+
+
+    // protected $attributes = [
+    //     'completion'=>0
+    // ];
 
     public function task()
     {

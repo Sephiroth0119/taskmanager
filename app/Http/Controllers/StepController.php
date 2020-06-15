@@ -16,8 +16,8 @@ class StepController extends Controller
     public function index(Task $task)
     {
         return response()->json([
-            'steps'=>$task->steps
-        ],200);
+            'steps' => $task->steps
+        ], 200);
     }
 
     /**
@@ -36,11 +36,13 @@ class StepController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Task $task,Request $request)
+    public function store(Task $task, Request $request)
     {
+        $step = $task->steps()->create($request->only('name'));
+        $step->refresh();
         return response()->json([
-            'step'=>$task->steps()->create($request->only('name'))
-        ],201);
+            'step' => $step
+        ], 201);
     }
 
     /**
@@ -72,18 +74,29 @@ class StepController extends Controller
      * @param  \App\Step  $step
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Step $step)
+    public function update(Request $request, Task $task, Step $step)
     {
-        //
+        $step->update($request->only('completion'));
     }
 
+    public function completeAll(Task $task)
+    {
+        $task->steps()->update([
+            'completion' => 1
+        ]);
+    }
+
+    public function clearCompleted(Task $task)
+    {
+        $task->steps()->where(['completion' => 1])->delete();
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Step  $step
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task,Step $step)
+    public function destroy(Task $task, Step $step)
     {
         $step->delete();
 

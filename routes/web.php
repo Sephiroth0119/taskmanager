@@ -20,8 +20,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'ProjectsController@index');
 
-Route::resource('projects','ProjectsController');
-Route::resource('tasks','TasksController');
-Route::resource('tasks.steps','StepController');
+Route::resource('projects', 'ProjectsController');
+Route::resource('tasks', 'TasksController');
 
-Route::post('tasks/{id}/check','TasksController@check')->name('tasks.check');
+Route::post('tasks/{task}/steps/complete', 'StepController@completeAll');
+Route::delete('tasks/{task}/steps/clearCompleted', 'StepController@clearCompleted');
+Route::resource('tasks.steps', 'StepController');
+
+Route::post('tasks/{id}/check', 'TasksController@check')->name('tasks.check');
