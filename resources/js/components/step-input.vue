@@ -23,35 +23,32 @@
 </template>
 
 <script>
-import { Hub } from "../event-bus";
-
+import { Message } from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
 export default {
-    props: ["route"],
+    props: {
+        route: String
+    },
     data() {
         return {
             newStep: ""
         };
-    },
-    created() {
-        Hub.$on("edit", this.edit);
     },
     methods: {
         addStep() {
             axios
                 .post(this.route, { name: this.newStep })
                 .then(res => {
-                    this.$emit("add", res.data.step);
-                    this.newStep = "";
+                    window.location.reload();
+                    // this.$emit("add", res.data.step);
+                    // this.newStep = "";
                 })
                 .catch(err => {
+                    if (err.response.status === 422) {
+                        Message.error(err.response.data.errors.name[0]);
+                    }
                     // alert(`很抱歉，发生错误，\n ${err.response.data.meassage}  \n 错误码：${err.response.status}`)
                 });
-        },
-        edit(step) {
-            // console.log(step);
-            this.newStep = step.name;
-            //focus当前的输入框
-            this.$refs.newStep.focus();
         }
     }
 };

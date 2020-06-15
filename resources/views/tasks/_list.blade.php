@@ -30,7 +30,7 @@
             <tr>
                 <td class="col-9 ">
                 <span class="badge badge-secondary mr-3">{{ $task->updated_at->diffForHumans() }}</span>
-                <a href="{{ route('tasks.show',$task->id) }}">{{ $task->name }}</a>
+                <a href="{{ route('tasks.steps.index',$task->id) }}">{{ $task->name }}</a>
                 </td>
                 <td>
                     @include('tasks._checkForm')

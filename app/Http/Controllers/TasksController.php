@@ -28,8 +28,8 @@ class TasksController extends Controller
         //auth()->user()->tasks()
         $todos = $this->repo->todos();
         $dones = $this->repo->dones();
-        $projects = request()->user()->projects()->pluck('name','id');
-        return view('tasks.index',compact('todos','dones','projects'));
+        $projects = request()->user()->projects()->pluck('name', 'id');
+        return view('tasks.index', compact('todos', 'dones', 'projects'));
     }
 
     /**
@@ -63,7 +63,6 @@ class TasksController extends Controller
      */
     public function show(Task $task)
     {
-        return view('tasks.show',compact('task'));
     }
 
     public function check($id)
@@ -92,7 +91,7 @@ class TasksController extends Controller
      */
     public function update(UpdateTask $request, $id)
     {
-        $this->repo->update($request,$id);
+        $this->repo->update($request, $id);
         return back();
     }
 

@@ -25,6 +25,7 @@ Route::resource('tasks', 'TasksController');
 
 Route::post('tasks/{task}/steps/complete', 'StepController@completeAll');
 Route::delete('tasks/{task}/steps/clearCompleted', 'StepController@clearCompleted');
+Route::patch('tasks/{task}/steps/{step}/toggle', 'StepController@toggle');
 Route::resource('tasks.steps', 'StepController');
 
 Route::post('tasks/{id}/check', 'TasksController@check')->name('tasks.check');
